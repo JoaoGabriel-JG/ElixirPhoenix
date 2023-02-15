@@ -5,17 +5,17 @@ defmodule FizzBuzz do
     |> handle_file_read()
   end
 
-
-  defp handle_file_read({ :ok, result }) do
+  defp handle_file_read({:ok, result}) do
     result =
       result
-    |> String.split(",")   # "1,2,3,4" -> ["1", "2", "3", "4"]
-    |> Enum.map(&convert_and_evaluate_numbers/1)
+      # "1,2,3,4" -> ["1", "2", "3", "4"]
+      |> String.split(",")
+      |> Enum.map(&convert_and_evaluate_numbers/1)
 
-    { :ok, result }
+    {:ok, result}
   end
 
-  defp handle_file_read({ :error, reason }), do: { :error, "Error reading the file: #{reason}" }
+  defp handle_file_read({:error, reason}), do: {:error, "Error reading the file: #{reason}"}
 
   defp convert_and_evaluate_numbers(elem) do
     elem
